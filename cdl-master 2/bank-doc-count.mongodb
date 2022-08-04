@@ -1,0 +1,32 @@
+// MongoDB Playground
+// To disable this template go to Settings | MongoDB | Use Default Template For Playground.
+// Make sure you are connected to enable completions and to be able to run a playground.
+// Use Ctrl+Space inside a snippet or a string literal to trigger completions.
+dbase='CDL';
+collection='cdl'
+// Select the database to use.
+use( dbase );
+coll = db[ collection ];
+
+db.dcl.findOne();
+
+// Build an aggregation to view total sales for each product in 2014.
+// const aggregation = [
+//   { $match: { 'bank_doc.locked_dttm': { $gte: new Date('2022-03-20') } } },
+//   { $sortByCount: '$bank_doc.locked_by' },
+//   { $limit : 5 }
+// ];
+
+
+// coll.aggregate(aggregation);
+coll.find({ 'arrangement.type_code':'N6'}, { 'bank_doc':1, 'arrangement':1, 'tags':1 }).limit(1)
+
+
+/*
+ ,
+  "associated" : [
+      { "process": "loan", "xref_id": "A1012232131", "requested" : { "$date":"2020-05-18T15:36:28Z" } }
+  ]
+*/
+
+
